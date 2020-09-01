@@ -13,8 +13,10 @@ export default class App extends Component {
 
   //データ保存
   handleAdd(e){
-  	console.log(e.target.title.value);
   	e.preventDefault(); //preventDefaultを記述しないとリダイレクトされる。
+  	this.state.todo.push({title: e.target.title.value}); // フォームから受け取ったデータをオブジェクトに挿入して、stateのtodo配列に追加
+  	this.setState({todo: this.state.todo}); // setStateを使ってstateを上書き、この時点で保存が完了
+  	e.target.title.value = "";// inputのvalueを空に
   }
 
   render() {
